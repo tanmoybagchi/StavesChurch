@@ -137,6 +137,10 @@ export abstract class PageListBase<TPage extends Page, TPageListItem extends Pag
   }
 
   protected applyFilter() {
+    if (this.fullList === undefined || this.fullList === null || this.fullList.length === 0) {
+      return;
+    }
+
     if (this.showCurrent) {
       this.dataSource.data = this.fullList.filter(x => x.current);
       return;
