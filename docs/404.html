@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8">
+  <title>Staves Church</title>
+  <meta name="theme-color" content="#3f51b5">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="description" content="Staves United Memrial Church" />
+  <meta name="author" content="Tanmoy Bagchi" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="format-detection" content="telephone=no">
+  <base href="/staveschurch/">
+  <!--Frame busting. https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet#Best-for-now_Legacy_Browser_Frame_Breaking_Script-->
+  <style id="antiClickjack">
+    body {
+      display: none !important;
+    }
+  </style>
+  <script type="text/javascript">
+    if (self === top) {
+      var antiClickjack = document.getElementById("antiClickjack");
+      antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+      top.location = self.location;
+    }
+  </script>
+  <!--End Frame busting.-->
+<link rel="stylesheet" href="styles.78a95718a33d94a748e7.css"></head>
+<body class="mat-app-background mat-typography">
+  <noscript>
+    <h1>Staves Church</h1>
+    <h4 style="color: red">
+      For full functionality of this site it is necessary to enable JavaScript. Here are the <a href="http://www.enable-javascript.com/">instructions how to enable JavaScript in your web browser</a>.
+    </h4>
+  </noscript>
+
+  <app-root></app-root>
+<script type="text/javascript" src="runtime.82af7be971c7ae8b345a.js"></script><script type="text/javascript" src="polyfills.f6ae3e8b63939c618130.js"></script><script type="text/javascript" src="scripts.b8427f319694de3a294c.js"></script><script type="text/javascript" src="main.5ac1a6b5a2bdfcf4bd7c.js"></script></body>
+</html>
