@@ -33,7 +33,7 @@ import { SharedModule } from './shared/shared.module';
     HomepageModule,
     PageModule,
     PhotoModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
     SecurityModule,
     SermonModule,
     ServerErrorModule,
