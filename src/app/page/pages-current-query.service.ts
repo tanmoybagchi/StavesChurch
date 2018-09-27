@@ -20,7 +20,7 @@ export class PagesCurrentQuery {
 
   private getCurrentPagesInternal(pages: Page[]) {
     const result = this.currentPages(pages);
-    return result.length === 0 ? [new Page()] : result;
+    return result.length === 0 ? [] : result;
   }
 
   private currentPages(pages: Page[]) {
