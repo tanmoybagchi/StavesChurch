@@ -2,7 +2,7 @@
   "name": "staves-church",
   "version": "1.0.0",
   "scripts": {
-    "build": "node_modules\\.bin\\ng build --prod --progress false --output-path dist/",
+    "build": "node_modules\\.bin\\ng build --prod --progress false --output-path docs/",
     "serve": "node_modules\\.bin\\ng serve --aot --progress false --base-href /"
   },
   "private": true,
