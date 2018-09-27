@@ -9,7 +9,7 @@ export class Pages {
     { link: 'pastor', name: 'Pastor', sm: true },
     { link: 'sermon', name: 'Sermon', md: true },
     { link: 'photos', name: 'Photos', md: true },
-    { link: 'united-methodist-women', name: 'United methodist women', md: true },
+    { link: 'united-methodist-women', name: 'United Methodist Women', md: true },
     { link: 'vision', name: 'Vision', md: true },
     { link: 'caller', name: 'Caller', lg: true },
     { link: 'staff', name: 'Staff', lg: true },
