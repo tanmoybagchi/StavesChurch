@@ -74,6 +74,11 @@ export class PageDatabase {
 
   get(kind: string) {
     const result = this.initialising ? this.observable : of(this.pages);
-    return result.pipe(map(pages => pages.filter(x => x.kind === kind).map(page => DomainHelper.adapt(Page, page))));
+    return result.pipe(
+      map(pages => pages
+        .filter(x => x.kind === kind)
+        .map(page => DomainHelper.adapt(Page, page))
+      )
+    );
   }
 }
