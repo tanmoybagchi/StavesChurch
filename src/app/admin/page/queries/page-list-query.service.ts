@@ -10,8 +10,6 @@ export class PageListQuery {
   ) { }
 
   execute(kind: string) {
-    return this.pageDatabase.get().pipe(
-      map(list => list.filter(item => item.kind === kind))
-    );
+    return this.pageDatabase.get(kind);
   }
 }

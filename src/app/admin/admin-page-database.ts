@@ -18,14 +18,14 @@ export class AdminPageDatabase {
     private pageDatabase: PageDatabase,
   ) { }
 
-  get() {
-    return this.pageDatabase.get();
+  get(kind: string) {
+    return this.pageDatabase.get(kind);
   }
 
   add(pageToAdd: Page) {
     this.pageDatabase.initialize();
 
-    return this.get().pipe(
+    return this.get(pageToAdd.kind).pipe(
       switchMap(_ => {
         const newPage = DomainHelper.adapt(Page, pageToAdd);
         newPage.id = Math.max(...this.pageDatabase.pages.map(x => x.id)) + 1;
@@ -51,7 +51,7 @@ export class AdminPageDatabase {
   addAll(pagesToAdd: Page[]) {
     this.pageDatabase.initialize();
 
-    return this.get().pipe(
+    return this.get(pagesToAdd[0].kind).pipe(
       switchMap(_ => {
         const addedItems: Page[] = [];
 
@@ -89,7 +89,7 @@ export class AdminPageDatabase {
   update(updatedPage: Page) {
     this.pageDatabase.initialize();
 
-    return this.get().pipe(
+    return this.get(updatedPage.kind).pipe(
       switchMap(_ => {
         const result = new Result();
 
@@ -125,7 +125,7 @@ export class AdminPageDatabase {
   updateAll(updatedPages: Page[]) {
     this.pageDatabase.initialize();
 
-    return this.get().pipe(
+    return this.get(updatedPages[0].kind).pipe(
       switchMap(_ => {
         const result = new Result();
 
@@ -168,7 +168,7 @@ export class AdminPageDatabase {
   remove(page: Page) {
     this.pageDatabase.initialize();
 
-    return this.get().pipe(
+    return this.get(page.kind).pipe(
       switchMap(_ => {
         const result = new Result();
 

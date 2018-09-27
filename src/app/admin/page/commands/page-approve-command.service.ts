@@ -30,9 +30,9 @@ export class PageApproveCommand {
       );
     }
 
-    return this.pageDatabase.get().pipe(
+    return this.pageDatabase.get(model.kind).pipe(
       // tslint:disable-next-line:max-line-length
-      map(pages => pages.filter(page => page.kind === model.kind && page.status === 'Approved')),
+      map(pages => pages.filter(page => page.status === 'Approved')),
       switchMap(_ => this.onPages(_, model))
     );
   }

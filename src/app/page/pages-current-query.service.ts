@@ -13,13 +13,13 @@ export class PagesCurrentQuery {
   ) { }
 
   execute(kind: string) {
-    return this.pageService.get().pipe(
-      map(pages => this.getCurrentPagesInternal(pages, kind))
+    return this.pageService.get(kind).pipe(
+      map(pages => this.getCurrentPagesInternal(pages))
     );
   }
 
-  private getCurrentPagesInternal(pages: Page[], kind: string) {
-    const result = this.currentPages(pages).filter(x => x.kind === kind);
+  private getCurrentPagesInternal(pages: Page[]) {
+    const result = this.currentPages(pages);
     return result.length === 0 ? [new Page()] : result;
   }
 

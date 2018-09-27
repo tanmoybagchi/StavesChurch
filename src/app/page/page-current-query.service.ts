@@ -13,15 +13,15 @@ export class PageCurrentQuery {
   ) { }
 
   execute(kind: string) {
-    return this.pageDatabase.get().pipe(
-      map(pages => this.getCurrentPageInternal(pages, kind))
+    return this.pageDatabase.get(kind).pipe(
+      map(pages => this.getCurrentPageInternal(pages))
     );
   }
 
-  private getCurrentPageInternal(pages: Page[], kind: string) {
+  private getCurrentPageInternal(pages: Page[]) {
     const now = Date.now();
 
-    const approvedPages = pages.filter(x => x.kind === kind && x.status === 'Approved' && x.effectiveFrom.valueOf() <= now);
+    const approvedPages = pages.filter(x => x.status === 'Approved' && x.effectiveFrom.valueOf() <= now);
     if (approvedPages.length === 0) {
       return new Page();
     }

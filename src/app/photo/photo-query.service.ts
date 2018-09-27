@@ -14,9 +14,9 @@ export class PhotoQuery {
   ) {  }
 
   execute() {
-    return this.pageDatabase.get().pipe(
+    return this.pageDatabase.get('photo').pipe(
       map(pages => pages
-        .filter(item => item.kind === 'photo' && item.status === 'Approved')
+        .filter(item => item.status === 'Approved')
         .map(item => {
           const photo = new Photo();
           DomainHelper.adapt(photo, item);
