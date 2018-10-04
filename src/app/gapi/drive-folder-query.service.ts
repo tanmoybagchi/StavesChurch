@@ -52,7 +52,7 @@ export class DriveFolderQuery {
     this.data = [];
 
     this.observable = this.serviceAccountSigninCommand.execute().pipe(
-      switchMap(_ => this.onAccessToken(_)),
+      switchMap(_ => this.onServiceAccountSignin(_)),
       tap(_ => {
         // when the cached data is available we don't need the 'Observable' reference anymore
         this.observable = null;
@@ -63,7 +63,7 @@ export class DriveFolderQuery {
     );
   }
 
-  private onAccessToken(accessToken: GoogleAccessToken) {
+  private onServiceAccountSignin(accessToken: GoogleAccessToken) {
     return this.getFolderId(environment.rootFolder, null, accessToken).pipe(
       switchMap((x: { files: { id: string }[] }) => {
         this.data.push({ name: environment.rootFolder, id: x.files[0].id });
