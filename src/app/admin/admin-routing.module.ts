@@ -34,7 +34,6 @@ const routes: Routes = [
           { path: 'events', component: AdminEventsComponent },
           { path: 'homepage', component: AdminHomepageListComponent },
           { path: 'homepage/:id', component: AdminHomepageEditComponent },
-          { path: 'ministries', component: AdminMinistriesListComponent },
           { path: 'ministries/:id', component: AdminMinistriesEditComponent },
           { path: 'photos', component: AdminPhotoListComponent },
           { path: 'sermon', component: AdminSermonListComponent },
