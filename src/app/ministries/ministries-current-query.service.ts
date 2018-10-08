@@ -13,19 +13,7 @@ export class MinistriesCurrentQuery {
 
   execute() {
     return this.pageCurrentQuery.execute('ministries').pipe(
-      map(page => {
-        if (String.isNullOrWhitespace(page.content)) {
-          return new Ministries();
-        }
-
-        const jsonContent = JSON.parse(page.content);
-
-        const ministries = DomainHelper.adapt(Ministries, jsonContent);
-
-        jsonContent.list.forEach(item => ministries.list.push(DomainHelper.adapt(Ministry, item)));
-
-        return ministries;
-      })
+      map(page => DomainHelper.adapt(Ministries, page.content))
     );
   }
 }
