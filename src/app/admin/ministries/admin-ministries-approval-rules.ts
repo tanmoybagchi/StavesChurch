@@ -35,7 +35,10 @@ export class AdminMinistriesApprovalRules {
     const result = this.rulesEngine.check(model);
 
     if (model.content.list.length > 1) {
-      const ministryNames = model.content.list.map(x => x.name).sort();
+      const ministryNames = model.content.list
+        .filter(x => String.hasData(x.name))
+        .map(x => x.name)
+        .sort();
 
       for (let index = 0; index < ministryNames.length - 1; index++) {
         if (ministryNames[index] === ministryNames[index + 1]) {

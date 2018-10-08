@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminMinistriesEditComponent } from '@app/admin/ministries/admin-ministries-edit.component';
-import { AdminMinistriesListComponent } from '@app/admin/ministries/admin-ministries-list.component';
 import { PageEditComponent } from '@app/admin/page/page-edit/page-edit.component';
 import { PageListComponent } from '@app/admin/page/page-list/page-list.component';
 import { AdminGuard } from '@app/security/admin.guard';

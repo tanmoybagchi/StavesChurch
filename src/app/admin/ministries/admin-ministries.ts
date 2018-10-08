@@ -13,6 +13,9 @@ export class AdminMinistries extends Page<Ministries> {
   remove(item: Ministry) {
     const idx = this.content.list.indexOf(item, 0);
     this.content.list.splice(idx, 1);
+
+    // tslint:disable-next-line:no-unused-expression
+    this.content.list.length === 0 && this.content.list.push(new Ministry());
   }
 
   moveUp(item: Ministry) {

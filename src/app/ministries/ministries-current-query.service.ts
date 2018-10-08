@@ -12,7 +12,7 @@ export class MinistriesCurrentQuery {
   ) { }
 
   execute() {
-    return this.pageCurrentQuery.execute('caller').pipe(
+    return this.pageCurrentQuery.execute('ministries').pipe(
       map(page => {
         if (String.isNullOrWhitespace(page.content)) {
           return new Ministries();
@@ -22,9 +22,7 @@ export class MinistriesCurrentQuery {
 
         const ministries = DomainHelper.adapt(Ministries, jsonContent);
 
-        jsonContent
-          .list
-          .forEach(item => ministries.list.push(DomainHelper.adapt(Ministry, item)));
+        jsonContent.list.forEach(item => ministries.list.push(DomainHelper.adapt(Ministry, item)));
 
         return ministries;
       })
