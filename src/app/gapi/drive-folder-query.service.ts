@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { GapiModule } from './gapi.module';
 import { ServiceAccountSigninCommand } from './service-account-signin-command.service';
+import { LocalStorageService } from '@app/core/storage/local-storage.service';
 
 @Injectable({
   providedIn: GapiModule
@@ -17,7 +18,8 @@ export class DriveFolderQuery {
 
   constructor(
     private http: HttpClient,
-    private serviceAccountSigninCommand: ServiceAccountSigninCommand
+    private serviceAccountSigninCommand: ServiceAccountSigninCommand,
+    private storage: LocalStorageService,
   ) {
     this.initialize();
   }
@@ -49,7 +51,11 @@ export class DriveFolderQuery {
 
     this.initializing = true;
 
-    this.data = [];
+    this.data = this.storage.get('folders') || [];
+    if (this.data.length > 0) {
+      this.initializing = false;
+      return;
+    }
 
     this.observable = this.serviceAccountSigninCommand.execute().pipe(
       switchMap(_ => this.onServiceAccountSignin(_)),
@@ -58,6 +64,8 @@ export class DriveFolderQuery {
         this.observable = null;
 
         this.initializing = false;
+
+        this.storage.set('folders', this.data);
       }),
       share()
     );
