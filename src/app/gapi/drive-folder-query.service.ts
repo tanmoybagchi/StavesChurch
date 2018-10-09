@@ -1,12 +1,12 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from '@app/core/storage/local-storage.service';
 import { GoogleAccessToken } from '@app/gapi/google-access-token';
 import { environment } from '@env/environment';
 import { Observable, of } from 'rxjs';
 import { map, share, switchMap, tap } from 'rxjs/operators';
 import { GapiModule } from './gapi.module';
 import { ServiceAccountSigninCommand } from './service-account-signin-command.service';
-import { LocalStorageService } from '@app/core/storage/local-storage.service';
 
 @Injectable({
   providedIn: GapiModule
